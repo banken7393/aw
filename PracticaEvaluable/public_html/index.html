@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+Tochangethislicenseheader,chooseLicenseHeadersinProjectProperties.
+Tochangethistemplatefile,chooseTools|Templates
+andopenthetemplateintheeditor.
+-->
+<HTML>
+    <HEAD>
+        <TITLE>Selectordemodelo</TITLE>
+        <SCRIPT LANGUAGE="JavaScript">
+            function validarEmail(email) {
+                caracNoValidos = "/:,;";
+                if (email == "")
+                    returnfalse;//deberellenarse
+                for (i = 0; i < caracNoValidos.length; i++) {
+        //¿hayalg´uncar´acternov´alido?
+                    caracMal = caracNoValidos.charAt(i);
+                    if (email.indexOf(caracMal, 0) > -1)
+                        returnfalse;
+                }
+                posArroba = email.indexOf("@", 1);//debehaberuna@
+                if (posArroba == -1)
+                    returnfalse;
+                if (email.indexOf("@", posArroba + 1) != -1)
+                    returnfalse;
+        //ys´olouna
+                posPunto = email.indexOf(".", posArroba);
+                if (posPunto == -1)
+                    returnfalse;
+        //yalmenosun.despu´esdela@
+                if (posPunto + 3 > email.length)
+                    returnfalse;
+        //debehaberalmenos2caracterestrasel.
+                returntrue;
+            }
+            function esNum(valor) {//¿Esun numero?
+                if (valor == "")
+                    returnfalse;
+                for (i = 0; i < valor.length; i++) {
+                    35
+                    if (valor.charAt(i) < "0")
+                        returnfalse;
+                    if (valor.charAt(i) > "9")
+                        returnfalse;
+                }
+                returntrue;
+            }
+            function validarCodigo(codigo) {//¿C´odigo postal v´alido?
+                if (codigo == "")
+                    returntrue;
+                if (esNum(codigo))
+                    returntrue;//Debeser num´erico
+                returnfalse;
+            }
+            function enviar(formulario) {
+        //asegurarsedequesehaseleccionadocolor
+                opcionColor = formulario.color.selectedIndex;
+                if (formulario.color.options[opcionColor].value == "") {
+                    alert("Debeelegiruncolor");
+                    returnfalse;
+                }
+        //asegurarsedequesehaelegidoelnodepuertas
+                opcionPuertas = -1;
+                for (i = 0; i < formulario.puertas.length; i++) {
+                    if (formulario.puertas[i].checked)
+                        opcionPuertas = i;
+                }
+                if (opcionPuertas == -1) {
+                    alert("Debeelegireln´umerodepuertas");
+                    returnfalse;
+                }
+        //losdecuatropuertasnopuedentenertechosolar
+                if (formulario.puertas[opcionPuertas].value == "cuatroPuertas" && formulario.techoSolar.checked) {
+                    36
+                    alert("Eltechosolars´oloest´adisponibleenelmodelodedospuertas");
+                    returnfalse;
+                }
+        //comprobarsiladirecci´ondee-mailescorrecta
+                if (!validarEmail(formulario.dirEmail.value)) {
+                    alert("Direcci´ondecorreoelectr´onicoincorrecta");
+                    formulario.dirEmail.focus();
+                    formulario.dirEmail.select();
+                    returnfalse;
+                }
+                if (formulario.cp.value == "" && formulario.distribuidor.selectedIndex == -1) {
+                    alert("Debeintroducirunc´odigopostaloelegirsudistribuidorm´ascercano");
+                    formulario.cp.focus();
+                    returnfalse;
+                }
+                if (!validarCodigo(formulario.cp.value)) {
+                    alert("Elc´odigopostalnoesv´alido");
+                    formulario.cp.focus();
+                    formulario.cp.select();
+                    returnfalse;
+                }
+        //Sihemosllegadohastaaqu´ı,todoesv´alido
+                returntrue;
+            }
+            function verificarPuertas(campoTecho) {
+                if (campoTecho.checked)
+                    for (i = 0; i < document.miForm.puertas.length; i++)
+                        if (document.miForm.puertas[i].value == "dosPuertas")
+                            37
+                document.miForm.puertas[i].checked = true;
+            }
+        </SCRIPT>
+    </HEAD>
+    <BODY BGCOLOR=WHITE>
+        <H2 ALIGN=CENTER>Selectordemodelo</H2>
+        <FORM ACTION="mailto:luis@sip.ucm.es" METHOD="post" ENCTYPE="text/plain" NAME="miForm" onSubmit="returnenviar(this)">
+            <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2">
+                <TR>
+                <TDALIGN="right">E-mail:</TD>
+                    <TD COLSPAN="2">
+                        <INPUT NAME="dirEmail" TYPE="text" SIZE="30"></TD></TR>
+                    <TR>
+                        <TD ALIGN="right">Colores:</TD>
+                        <TD COLSPAN="2">
+                            <SELECT NAME="color">
+                                <OPTION VALUE=""SELECTED>Seleccioneuncolor
+                                <OPTION VALUE="Rojo">Rojo
+                                <OPTION VALUE="Verde">Verde
+                                <OPTION VALUE="Azul">Azul
+                            </SELECT></TD></TR>
+                    <TR>
+                        <TD ALIGN="right">Opciones:</TD>
+                        <TD>
+                            <INPUT TYPE="checkbox"NAME="techoSolar"VALUE="si"
+                                   onClick="verificarPuertas(this)">Techosolar(s´olocondospuertas)</TD>
+                        <TD>
+                            <INPUT TYPE="checkbox"NAME="elevalunas"VALUE="si">Elevalunasel´ectricos</TD></TR>
+                    38
+                    <TR>
+                        <TD ALIGN="right">Puertas:</TD>
+                        <TD COLSPAN="2">
+                            <INPUT TYPE="radio" VALUE="dosPuertas" NAME="puertas">Dos
+                            <INPUT TYPE="radio" VALUE="cuatroPuertas" NAME="puertas">Cuatro</TD></TR>
+                    <TR>
+                        <TD COLSPAN="3">
+                            Introduzcasuc´odigopostaloseleccionesudistribuidorm´ascercano:
+                            <P>C´odigopostal:<INPUT NAME="cp" TYPE="text" SIZE="5" MAXLENGTH="5">&nbsp;&nbsp;
+                                <SELECT NAME="distribuidor" SIZE="4">
+                                    <OPTION>Madrid--Centro
+                                    <OPTION>Madrid--Chamart´ın
+                                    <OPTION>Madrid--Aluche
+                                    <OPTION>Madrid--Ventas
+                                    <OPTION>Madrid--Moncloa
+                                </SELECT>
+                            <P ALIGN="center"><INPUT TYPE="submit" VALUE="Enviar">&nbsp;<INPUT TYPE="reset"></TD></TR>
+            </TABLE>
+        </FORM>
+    </BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTDXHTML1.0Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+        <title>jQuery</title>
+        <script type="text/javascript"src="jquery.js"></script>
+        <script type="text/javascript">
+$(document).ready(function(){
+$("p").bind("mouseenter mouseleave",function(){
+$(this).toggleClass("over");
+});
+});
+</script>
+<style type="text/css">
+p{cursor:pointer;
+padding-left:20px;}
+p.over{background:#9cf;}
+</style>
+</head>
+<body>
+<h3>P´arrafo</h3>
+<p>Loremipsumdolorsitamet,consectetueradipiscingelit.Sednonrisus.Suspendisselectustortor,dignissimsitamet,adipiscingnec,ultriciessed,dolor.</p>
+</body>
+</html>

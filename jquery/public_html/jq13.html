@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTDXHTML1.0Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+        <title>jQuery</title>
+        <script type="text/javascript"src="jquery.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("li:not(:first,:last)").css("background", "#9cf");
+            });
+        </script>
+        <style type="text/css">
+            li{width:150px;}
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>´Itemdelista1</li>
+            <li>´Itemdelista2</li>
+            <li>´Itemdelista3</li>
+            <li>´Itemdelista4</li>
+            <li>´Itemdelista5</li>
+        </ul>
+    </body>
+</html>

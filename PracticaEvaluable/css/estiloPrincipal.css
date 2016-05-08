@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-abr-2016, 18:53:57
+    Author     : Banken
+*/
+/*
+.navbar-custom {
+    background-image: -webkit-linear-gradient(top, #2FD2F7 0%, #222 100%);
+    background-image:      -o-linear-gradient(top, #2FD2F7 0%, #222 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2FD2F7), to(#2CCBEF));
+    background-image:         linear-gradient(to bottom, #2FD2F7 0%, #2CCBEF 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2FD2F7', endColorstr='#ff2CCBEF', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    background-color: #2FD2F7;
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 1px;
+  width: auto;
+}*/

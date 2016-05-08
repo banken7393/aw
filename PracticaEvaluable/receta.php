@@ -45,7 +45,7 @@ and open the template in the editor.
             }
         </style>
     </head>
- <!Barra de Navegacion--------------------------------------------------------------------------------------------------------------------->
+    <!Barra de Navegacion--------------------------------------------------------------------------------------------------------------------->
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -80,7 +80,7 @@ and open the template in the editor.
                         <li>
                             <a href="enviar.php">Enviar Receta</a>
                         </li>
-                        
+
                     </ul>
 
                 </div>
@@ -101,10 +101,10 @@ and open the template in the editor.
                 <img src="img/<?php echo $img; ?>" class="img-responsive"  >
             </div>
             <div class="col-xs-8">
-        <div class="jumbotron">
-            <h1><?php echo $nombre; ?></h1>
-            <p><?php echo nl2br($receta); ?></p>
-        </div>
+                <div class="jumbotron">
+                    <h1><?php echo $nombre; ?></h1>
+                    <p><?php echo nl2br($receta); ?></p>
+                </div>
             </div>
         </div>
     </div>

@@ -104,7 +104,10 @@ and open the template in the editor.
             
             $img = mysql_result($result, $i, "img");
             $nombre = mysql_result($result, $i, "Nombre");
-
+            $id = mysql_result($result, $i,"ID");
+            echo '<a href="receta.php ?ID=';
+            echo "$id";
+            echo'">';
             echo '<div class="row">
                 <div class="col-xs-4">
 
@@ -116,7 +119,7 @@ and open the template in the editor.
                     echo "$nombre</h1>
                     </div>
                 </div>
-            </div>";
+            </div> </a>";
             
             $i++;
         }

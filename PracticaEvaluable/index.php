@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-type" content="text/html" charset="utf-8">>
         <title>La cocina pepina</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--<link href="bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen">-->
@@ -39,20 +39,20 @@ and open the template in the editor.
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="../default/">Todas</a></li>
+                                <li><a href="categoria.php ?categoria=Todas">Todas</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">China</a></li>
-                                <li><a href="#">Española</a></li>
-                                <li><a href="#">Francesa</a></li>
-                                <li><a href="#">Alemana</a></li>
-                                <li><a href="#">Japonesa</a></li>
-                                <li><a href="#">Postres</a></li>
-                                <li><a href="#">Italiana</a></li>
-                                <li><a href="#">Mexicana</a></li>
+                                <li><a href="categoria.php ?categoria=China">China</a></li>
+                                <li><a href="categoria.php ?categoria=Española">Española</a></li>
+                                <li><a href="categoria.php ?categoria=Francesa">Francesa</a></li>
+                                <li><a href="categoria.php ?categoria=Alemana">Alemana</a></li>
+                                <li><a href="categoria.php ?categoria=Japonesa">Japonesa</a></li>
+                                <li><a href="categoria.php ?categoria=Postres">Postres</a></li>
+                                <li><a href="categoria.php ?categoria=Italiana">Italiana</a></li>
+                                <li><a href="categoria.php ?categoria=Mexicana">Mexicana</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">Nosotros</a>
+                            <a href="Nosotros.html">Nosotros</a>
                         </li>
                         <li>
                             <a href="enviar.php">Enviar Receta</a>

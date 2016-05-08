@@ -1,3 +1,29 @@
+<?php
+$categoria = $_GET['categoria'];
+
+//primero conectamos
+$user = "cocinapepinadef";
+$password = "cocinapepinadef";
+$database = "cocinapepinadef";
+mysql_connect('localhost', $user, $password) or die('No pudo conectarse: ' . mysql_error());
+@mysql_select_db($database) or die("Unable to select database");
+mysql_query("SET NAMES 'utf8'");
+//Creamos la consulta
+if ($categoria != "Todas") {
+    $query = 'SELECT * FROM platos WHERE categoria="';
+    $query .= $categoria;
+    $query .= '"';
+} else {
+    $query = "SELECT * FROM platos";
+}
+//ejecutamos la consulta
+$result = mysql_query($query);
+$num = mysql_numrows($result);
+
+//cerramos conexxion
+mysql_close();
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -6,7 +32,7 @@ and open the template in the editor.
 -->
 <html lang="es">
     <head>
-        <meta charset="UTF-8" http-equiv="refresh" content="5;url=index.php">
+        <meta http-equiv="Content-type" content="text/html" charset="utf-8">
         <title>La cocina pepina</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--<link href="bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen">-->
@@ -14,9 +40,15 @@ and open the template in the editor.
         <link href="css/estiloPrincipal.css" rel="stylesheet" type="text/css" media="screen">
         <script src="jquery.js"></script>
         <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-
+        <style>
+            .carousel-inner > .item > img,
+            .carousel-inner > .item > a > img {
+                width: 70%;
+                margin: auto;
+            }
+        </style>
     </head>
- <!Barra de Navegacion--------------------------------------------------------------------------------------------------------------------->
+    <!Barra de Navegacion--------------------------------------------------------------------------------------------------------------------->
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -51,7 +83,7 @@ and open the template in the editor.
                         <li>
                             <a href="enviar.php">Enviar Receta</a>
                         </li>
-                        
+
                     </ul>
 
                 </div>
@@ -60,13 +92,37 @@ and open the template in the editor.
 
 
         <!cuerpo---------------------------------------------------------------------------------------------------------------------------------->
-        <div class="container">
-            <div class="jumbotron">
-                <h1>La Cocina Pepina</h1>
-                <p>Tu página de recetas</p>
-                <p>subida correcta se te redigira en breve</p>
-            </div>
-            
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>La Cocina Pepina</h1>
+            <p>Tu página de recetas</p>
         </div>
-    </body>
+        <?php
+        $i = 0;
+        while ($i < $num) {
+            
+            $img = mysql_result($result, $i, "img");
+            $nombre = mysql_result($result, $i, "Nombre");
+
+            echo '<div class="row">
+                <div class="col-xs-4">
+
+                    <img src="img/'; echo "$img";echo '"  class="img-responsive"  >
+                </div>
+                <div class="col-xs-8">
+                    <div class="jumbotron">
+                        <h1>';
+                    echo "$nombre</h1>
+                    </div>
+                </div>
+            </div>";
+            
+            $i++;
+        }
+        ?>
+
+    </div>
+
+</body>
 </html>

@@ -59,6 +59,7 @@ if (isset($_POST["submit"])) {
                 $database = "cocinapepinadef";
                 mysql_connect('localhost', $user, $password) or die('No pudo conectarse: ' . mysql_error());
                 @mysql_select_db($database) or die("Unable to select database");
+                mysql_query("SET NAMES 'utf8'");
                 //Creamos la consulta
                 $query = "INSERT INTO platos(categoria, img, Nombre, receta) VALUES('$categoria','$archivo','$plato','$receta')";
                 //ejecutamos la consulta
@@ -86,7 +87,7 @@ and open the template in the editor.
 -->
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-type" content="text/html" charset="utf-8">
         <title>La cocina pepina</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--<link href="bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen">-->
@@ -96,7 +97,7 @@ and open the template in the editor.
         <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 
     </head>
-    <!Barra de Navegacion--------------------------------------------------------------------------------------------------------------------->
+<!Barra de Navegacion--------------------------------------------------------------------------------------------------------------------->
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -113,44 +114,32 @@ and open the template in the editor.
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="../default/">Todas</a></li>
+                                <li><a href="categoria.php ?categoria=Todas">Todas</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">China</a></li>
-                                <li><a href="#">Española</a></li>
-                                <li><a href="#">Francesa</a></li>
-                                <li><a href="#">Alemana</a></li>
-                                <li><a href="#">Japonesa</a></li>
-                                <li><a href="#">Postres</a></li>
-                                <li><a href="#">Italiana</a></li>
-                                <li><a href="#">Mexicana</a></li>
+                                <li><a href="categoria.php ?categoria=China">China</a></li>
+                                <li><a href="categoria.php ?categoria=Española">Española</a></li>
+                                <li><a href="categoria.php ?categoria=Francesa">Francesa</a></li>
+                                <li><a href="categoria.php ?categoria=Alemana">Alemana</a></li>
+                                <li><a href="categoria.php ?categoria=Japonesa">Japonesa</a></li>
+                                <li><a href="categoria.php ?categoria=Postres">Postres</a></li>
+                                <li><a href="categoria.php ?categoria=Italiana">Italiana</a></li>
+                                <li><a href="categoria.php ?categoria=Mexicana">Mexicana</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">Nosotros</a>
+                            <a href="Nosotros.html">Nosotros</a>
                         </li>
                         <li>
-                            <a href="enviar.html">Enviar Receta</a>
+                            <a href="enviar.php">Enviar Receta</a>
                         </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">United <span class="caret"></span></a>
-                            <ul class="dropdown-menu" aria-labelledby="download">
-                                <li><a href="http://jsfiddle.net/bootswatch/cvLkpsx0/">Open Sandbox</a></li>
-                                <li class="divider"></li>
-                                <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
-                                <li><a href="./bootstrap.css">bootstrap.css</a></li>
-                                <li class="divider"></li>
-                                <li><a href="./variables.less">variables.less</a></li>
-                                <li><a href="./bootswatch.less">bootswatch.less</a></li>
-                                <li class="divider"></li>
-                                <li><a href="./_variables.scss">_variables.scss</a></li>
-                                <li><a href="./_bootswatch.scss">_bootswatch.scss</a></li>
-                            </ul>
-                        </li>
+                        
                     </ul>
 
                 </div>
             </div>
         </div>
+
+
 
         <!cuerpo---------------------------------------------------------------------------------------------------------------------------------->
     <div class="container">
@@ -169,7 +158,7 @@ and open the template in the editor.
                 </div>
                 <div class="form-group">
                     <label for="receta">receta</label>
-                    <textarea class="form-control" rows="10" id="receta" name="receta" placeholder="Escribe aqui la receta" id="receta" value="<?php echo htmlspecialchars($_POST['receta']); ?>" ></textarea>
+                    <textarea class="form-control" rows="10" id="receta" name="receta" placeholder="Escribe aqui la receta" id="receta" value="<?php echo $_POST['receta']; ?>" ></textarea>
                     <?php echo "<p class='text-danger'>$errReceta</p>"; ?>
                 </div>
                 <div class="form-group">
